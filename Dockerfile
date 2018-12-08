@@ -36,3 +36,4 @@ RUN chown -R www-data:www-data $APP_HOME
 
 COPY php.ini /usr/local/etc/php/
 
+
