@@ -8,8 +8,12 @@ RUN apt-get update && apt-get install -y \
       git \
       zip \
       unzip \
+      libfreetype6-dev \
+      libpng12-dev \
+      libjpeg-dev \
     && rm -r /var/lib/apt/lists/* \
     && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install \
       intl \
       mbstring \
@@ -18,9 +22,8 @@ RUN apt-get update && apt-get install -y \
       pdo_mysql \
       pdo_pgsql \
       pgsql \
-      zip
-
-##RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+      zip \
+      gd
 
 ENV APP_HOME /var/www/html
 
@@ -35,5 +38,4 @@ COPY . $APP_HOME
 RUN chown -R www-data:www-data $APP_HOME
 
 COPY php.ini /usr/local/etc/php/
-
 
