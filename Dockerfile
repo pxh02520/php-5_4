@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
       pdo_pgsql \
       pgsql \
       zip \
-      gd
+      gd \
+      exif
 
 ENV APP_HOME /var/www/html
 
