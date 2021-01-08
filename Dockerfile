@@ -43,6 +43,8 @@ RUN pecl install xdebug-2.4.1 && docker-php-ext-enable xdebug
 # web
 ENV APP_HOME /var/www/html
 
+WORKDIR $APP_HOME
+
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 RUN sed -i -e "s/html/html\/webroot/g" /etc/apache2/apache2.conf
