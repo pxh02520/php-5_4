@@ -1,15 +1,6 @@
 {
-    "name": "example-app",
-    "repositories": [
-        {
-            "type": "pear",
-            "url": "http://pear.cakephp.org"
-        }
-    ],
     "require": {
-        "cakephp/cakephp": "2.5.*"
-    },
-    "config": {
-        "vendor-dir": "Vendor/"
+        "phpunit/phpunit": "^4.8",
+        "guzzlehttp/guzzle": "^4.2"
     }
 }

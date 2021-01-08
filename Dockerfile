@@ -26,6 +26,21 @@ RUN apt-get update && apt-get install -y \
       gd \
       exif
 
+# install composer
+COPY --from=composer:1.10.15 /usr/bin/composer /usr/bin/composer
+
+# install phpunit/guzzle
+RUN mkdir /app
+RUN chmod 0777 -R /app
+WORKDIR /app
+
+COPY ./composer.json /app/
+RUN composer install
+
+# xdebug
+RUN pecl install xdebug-2.4.1 && docker-php-ext-enable xdebug
+
+# web
 ENV APP_HOME /var/www/html
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
